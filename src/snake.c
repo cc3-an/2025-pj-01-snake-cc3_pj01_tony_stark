@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
+// libreria aun por investigar.
 #include "snake_utils.h"
 #include "state.h"
 
@@ -32,10 +32,17 @@ int main(int argc, char* argv[]) {
   // Leer el tablero de un archivo, o crear un tablero por defecto.
   if (in_filename != NULL) {
     // TODO: cargar el tablero de in_filename
+    state = load_board(in_filename);
     // TODO: Si el archivo no existe, retornar -1
+    if (state == NULL) {
+      return -1;
+    }
     // TODO: Despues llamar a initialize_snakes en el estado creado
+    state = initialize_snakes(state);
   } else {
+    state = create_default_state();
     // TODO: Cargar el estado por defecto.
+    update_state(state, deterministic_food);
   }
 
   // TODO: Actualizar el estado. Utilizar la funcion deterministic_food
@@ -46,12 +53,14 @@ int main(int argc, char* argv[]) {
   // Escribir el tablero actualizado al archivo o stdout
   if (out_filename != NULL) {
     // TODO: Guardar el tablero en out_filename
+    save_board(state, out_filename);
   } else {
     // TODO: Imprimir el tablero a stdout
+    print_board(state, stdout);
   }
 
   // TODO: Liberen el estado creado
-
+  free_state(state);
   return 0;
 }
 
