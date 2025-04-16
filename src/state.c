@@ -31,7 +31,7 @@ game_state_t* create_default_state() {
   //Reservacion de memoria exclusivamente para las filas que habra en el tablero.
   state->board = malloc(state->num_rows * sizeof(char*));
 
-  //esta parte fue en la que recuri ayuda para solucionarlo porque lo tenia malo 
+  
 //Este ciclo recorre cada fila del tablero 
   for(unsigned int i= 0; i < state->num_rows; i++){
     
@@ -48,7 +48,7 @@ game_state_t* create_default_state() {
     //Esto agrega el caracter nulo al final de cada fila.
     state->board[i][20] = '\0';
   }
-//APARTIR DE ACA YO LO HICE , LO DE ARRIBA ESTABA MAL LA LOGICA QUE HICE.
+
 
   //esta sera la poicion inicial que tendra la fruta y la snake.
   state->board[2][2] = 'd';//cola de snake
