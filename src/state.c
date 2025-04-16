@@ -24,6 +24,50 @@ static void update_head(game_state_t* state, unsigned int snum);
 /* Tarea 1 */
 game_state_t* create_default_state() {
   // TODO: Implementar esta funcion.
+  game_state_t* state = malloc(sizeof(game_state_t)); //reservacion de memoria
+  state->num_rows = 18;// Numero de filas que habra en el tablero.
+  state->num_snakes = 1;// Significa que habra solo una snake 
+
+  //Reservacion de memoria exclusivamente para las filas que habra en el tablero.
+  state->board = malloc(state->num_rows * sizeof(char*));
+
+  //esta parte fue en la que recuri ayuda para solucionarlo porque lo tenia malo 
+//Este ciclo recorre cada fila del tablero 
+  for(unsigned int i= 0; i < state->num_rows; i++){
+    
+    state->board[i] = malloc(21 * sizeof(char));//Se reserva memoria para 21 columnas por fila
+    for (unsigned int j = 0; j < 20; j++){// Recore la parte de las columnas.
+      //Los bordes del tablero se llenan con "#"
+      if (i == 0 || i == 17 || j == 0 || j== 19){
+        state->board[i][j] = '#';
+        }else{
+        
+          state->board[i][j] = ' ';//Espacios vacios en el interior.
+      }
+    }
+    //Esto agrega el caracter nulo al final de cada fila.
+    state->board[i][20] = '\0';
+  }
+//APARTIR DE ACA YO LO HICE , LO DE ARRIBA ESTABA MAL LA LOGICA QUE HICE.
+
+  //esta sera la poicion inicial que tendra la fruta y la snake.
+  state->board[2][2] = 'd';//cola de snake
+  state->board[2][3] = '>';//cuerpo de snake
+  state->board[2][4] = 'D';//cabeza de snake
+  state->board[2][9] = '*';//fruta
+
+  //Configura la posicion de la cola y cabeza de la serpiente.
+  state->snakes = malloc(state->num_snakes * sizeof(snake_t));
+
+  state->snakes[0].tail_row = 2;
+  state->snakes[0].tail_col = 2;
+  state->snakes[0].head_row = 2;
+  state->snakes[0].head_col = 4;
+  state->snakes[0].live = true;// esta instruccion le da vida o bien para que se mueva.
+
+
+  return state; // estado del juego.
+    
   return NULL;
 }
 
