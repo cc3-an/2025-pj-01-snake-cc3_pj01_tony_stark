@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-// libreria aun por investigar.
+#include <stdlib.h>
 #include "snake_utils.h"
 #include "state.h"
 
