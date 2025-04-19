@@ -403,9 +403,4 @@ game_state_t* initialize_snakes(game_state_t* state) {
   return state;
 }
 
-/* Tarea 7: Guardar tablero */
-void save_board(game_state_t* state, char* filename) {
-  FILE* f = fopen(filename, "w");
-  print_board(state, f);
-  fclose(f);
-}
+
