@@ -75,14 +75,14 @@ game_state_t* create_default_state() {
 /* Tarea 2 */
 void free_state(game_state_t* state) {
   // TODO: Implementar esta funcion.
-  if (state == NULL) return;
+  //if (state == NULL) return;
   for(unsigned int i = 0; i < state->num_rows; i++) {
     free(state->board[i]);
   }
   free(state->board);
   free(state->snakes);
   free(state);
-  return;
+  
 }
 
 
@@ -92,7 +92,7 @@ void print_board(game_state_t* state, FILE* fp) {
   for (unsigned int i = 0; i < state->num_rows; i++){
     fprintf(fp, "%s\n", state->board[i]);
   }
-  return;
+  
 }
 
 
@@ -176,7 +176,7 @@ static char body_to_tail(char c) {
     case 'v': return 's';
     case '>': return 'd';
     default: return '?';
-    //return '?';
+    
   }
 }
 
@@ -194,7 +194,7 @@ static char head_to_body(char c) {
     case 'S': return 'v';
     case 'D': return '>';
     default: return '?';
-    //return '?';
+    
   }
   
 }
@@ -241,7 +241,6 @@ static char next_square(game_state_t* state, unsigned int snum) {
   unsigned int next_r = get_next_row(s.head_row, head);
   unsigned int next_c = get_next_col(s.head_col, head);
   return get_board_at(state, next_r, next_c);
-  //return '?';
 }
 
 
@@ -265,7 +264,6 @@ static void update_head(game_state_t* state, unsigned int snum) {
   s->head_row = get_next_row(s->head_row, head);
   s->head_col = get_next_col(s->head_col, head);
   set_board_at(state, s->head_row, s->head_col, head);
-  //return;
 }
 
 
@@ -289,7 +287,6 @@ static void update_tail(game_state_t* state, unsigned int snum) {
   s->tail_col = get_next_col(s->tail_col, tail);
   char next = get_board_at(state, s->tail_row, s->tail_col);
   set_board_at(state, s->tail_row, s->tail_col, body_to_tail(next));
-  //return;
 }
 
 /* Tarea 4.5 */
@@ -310,7 +307,6 @@ void update_state(game_state_t* state, int (*add_food)(game_state_t* state)) {
       }
     }
   }
-  //return;
 }
 
 /* Tarea 5 */
@@ -342,7 +338,6 @@ game_state_t* load_board(char* filename) {
 
   fclose(f);
   return state;
-  //return NULL;
 }
 
 
@@ -374,7 +369,6 @@ static void find_head(game_state_t* state, unsigned int snum) {
     r = next_r;
     c = next_c;
   }
-  //return;
 }
 
 /* Tarea 6.2 */
@@ -407,5 +401,11 @@ game_state_t* initialize_snakes(game_state_t* state) {
   }
 
   return state;
-  //return NULL;
+}
+
+/* Tarea 7: Guardar tablero */
+void save_board(game_state_t* state, char* filename) {
+  FILE* f = fopen(filename, "w");
+  print_board(state, f);
+  fclose(f);
 }
