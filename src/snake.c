@@ -41,9 +41,10 @@ int main(int argc, char* argv[]) {
     state = initialize_snakes(state);
   } else {
     state = create_default_state();
-    // TODO: Cargar el estado por defecto.
-    update_state(state, deterministic_food);
+   
   }
+   // TODO: Cargar el estado por defecto.
+    update_state(state, deterministic_food);
 
   // TODO: Actualizar el estado. Utilizar la funcion deterministic_food
   // (esta ya ha sido creada en snakes_utils.h) para agregar comida al
@@ -58,21 +59,9 @@ int main(int argc, char* argv[]) {
     // TODO: Imprimir el tablero a stdout
     print_board(state, stdout);
   }
-  print_board(state, stdout);
+  //print_board(state, stdout);
 
   // TODO: Liberen el estado creado
   free_state(state);
   return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
