@@ -90,15 +90,6 @@ void print_board(game_state_t* state, FILE* fp) {
 }
 
 
-/**
- * Guarda el estado actual a un archivo. No modifica el objeto/struct state.
- * (ya implementada para que la utilicen)
-*/
-void save_board(game_state_t* state, char* filename) {
-  FILE* f = fopen(filename, "w");
-  print_board(state, f);
-  fclose(f);
-}
 
 /* Tarea 4.1 */
 
@@ -397,4 +388,14 @@ game_state_t* initialize_snakes(game_state_t* state) {
   return state;
 }
 
+/**
+ * Guarda el estado actual a un archivo. No modifica el objeto/struct state.
+ * (ya implementada para que la utilicen)
+*/
 
+
+void save_board(game_state_t* state, char* filename) {
+  FILE* f = fopen(filename, "w");
+  print_board(state, f);
+  fclose(f);
+}
