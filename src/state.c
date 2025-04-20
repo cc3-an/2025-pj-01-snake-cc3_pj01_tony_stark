@@ -38,17 +38,11 @@ game_state_t* create_default_state() {
     state->board[i] = malloc(21 * sizeof(char));//Se reserva memoria para 21 columnas por fila
     for (unsigned int j = 0; j < 20; j++){// Recore la parte de las columnas.
       //Los bordes del tablero se llenan con "#"
-      if (i == 0 || i == 17 || j == 0 || j== 19){
-        state->board[i][j] = '#';
-        }else{
-        
-          state->board[i][j] = ' ';//Espacios vacios en el interior.
+      state->board[i][j] = (i == 0 || i == 17 || j == 0 || j == 19) ? '#' : ' ';//Espacios vacios en el interior.
       }
+      state->board[i][20] = '\0';//Esto agrega el caracter nulo al final de cada fila.
     }
-    //Esto agrega el caracter nulo al final de cada fila.
-    state->board[i][20] = '\0';
-  }
-
+    
 
   //esta sera la poicion inicial que tendra la fruta y la snake.
   state->board[2][2] = 'd';//cola de snake
@@ -57,7 +51,7 @@ game_state_t* create_default_state() {
   state->board[2][9] = '*';//fruta
 
   //Configura la posicion de la cola y cabeza de la serpiente.
-  state->snakes = malloc(state->num_snakes * sizeof(snake_t));
+  state->snakes = malloc(sizeof(snake_t));
 
   state->snakes[0].tail_row = 2;
   state->snakes[0].tail_col = 2;
