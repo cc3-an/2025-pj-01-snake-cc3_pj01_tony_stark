@@ -8,7 +8,7 @@
 #include "snake_utils.h"
 
 // Definiciones de funciones de ayuda.
-static void set_board_at(game_state_t* state, unsigned int row, unsigned int col, char ch);
+/*static void set_board_at(game_state_t* state, unsigned int row, unsigned int col, char ch);
 static bool is_tail(char c);
 static bool is_head(char c);
 static bool is_snake(char c);
@@ -19,7 +19,7 @@ static unsigned int get_next_col(unsigned int cur_col, char c);
 static void find_head(game_state_t* state, unsigned int snum);
 static char next_square(game_state_t* state, unsigned int snum);
 static void update_tail(game_state_t* state, unsigned int snum);
-static void update_head(game_state_t* state, unsigned int snum);
+static void update_head(game_state_t* state, unsigned int snum);*/
 
 /* Tarea 1 */
 game_state_t* create_default_state() {
