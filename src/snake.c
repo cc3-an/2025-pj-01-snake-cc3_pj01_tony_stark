@@ -59,7 +59,7 @@ int main(int argc, char* argv[]) {
     // TODO: Imprimir el tablero a stdout
     print_board(state, stdout);
   }
-  //print_board(state, stdout);
+  
 
   // TODO: Liberen el estado creado
   free_state(state);
