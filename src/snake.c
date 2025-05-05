@@ -43,6 +43,7 @@ int main(int argc, char* argv[]) {
     state = create_default_state();
    
   }
+
    // TODO: Cargar el estado por defecto.
     update_state(state, deterministic_food);
 
@@ -59,7 +60,6 @@ int main(int argc, char* argv[]) {
     // TODO: Imprimir el tablero a stdout
     print_board(state, stdout);
   }
-
   // TODO: Liberen el estado creado
   free_state(state);
   return 0;
