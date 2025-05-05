@@ -76,7 +76,7 @@ void free_state(game_state_t* state) {
   free(state);
   
 }
-/* Tarea 2 se implemento la funcion free_state para liberar la memoria despues de instalar valgrind.*/
+/* Tarea 2 se implemento la funcion free_state para liberar la memoria .*/
 
 
 /* Tarea 3 */
